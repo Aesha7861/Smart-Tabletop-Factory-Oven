@@ -1,0 +1,513 @@
+[
+    {
+        "id": "0eaaeda53b183f46",
+        "type": "tab",
+        "label": "Vacuum Gripper",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "ab07f45d523e2273",
+        "type": "mqtt in",
+        "z": "0eaaeda53b183f46",
+        "name": "",
+        "topic": "stf/oven_station/status",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "87d849f528acb8d9",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 400,
+        "y": 60,
+        "wires": [
+            [
+                "f032fc1848dfe199"
+            ]
+        ]
+    },
+    {
+        "id": "f032fc1848dfe199",
+        "type": "json",
+        "z": "0eaaeda53b183f46",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 520,
+        "y": 200,
+        "wires": [
+            [
+                "39be11965ceb89af",
+                "2fde57a654ec112e",
+                "c3f47120e8ffeb63",
+                "5185a3d6a0cf9944",
+                "52205e39df8273cb"
+            ]
+        ]
+    },
+    {
+        "id": "39be11965ceb89af",
+        "type": "debug",
+        "z": "0eaaeda53b183f46",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "2fde57a654ec112e",
+        "type": "function",
+        "z": "0eaaeda53b183f46",
+        "name": "vgr_state",
+        "func": "const s = msg.payload.state || \"\";\n\nconst vgrStates = [\n    \"GRIPPER_TO_OVEN\",\n    \"GRIPPER_LOWER_OVEN\",\n    \"GRIPPER_VACUUM_ON\",\n    \"GRIPPER_RAISE_OVEN\",\n    \"GRIPPER_TO_TURNTABLE\",\n    \"GRIPPER_LOWER_TABLE\",\n    \"GRIPPER_RELEASE\",\n    \"GRIPPER_RAISE_TABLE\"\n];\n\nmsg.payload = vgrStates.includes(s) ? s : \"IDLE\";\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 630,
+        "y": 100,
+        "wires": [
+            [
+                "aa436286f0f0045b"
+            ]
+        ]
+    },
+    {
+        "id": "aa436286f0f0045b",
+        "type": "ui_text",
+        "z": "0eaaeda53b183f46",
+        "group": "d91842f7a92663b8",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "State",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 810,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "c3f47120e8ffeb63",
+        "type": "function",
+        "z": "0eaaeda53b183f46",
+        "name": "vgr_vacuum",
+        "func": "msg.payload = msg.payload.vacuum_on ? \"ON\" : \"OFF\";\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 240,
+        "wires": [
+            [
+                "9ba2cb6a8b4e7a35"
+            ]
+        ]
+    },
+    {
+        "id": "52205e39df8273cb",
+        "type": "function",
+        "z": "0eaaeda53b183f46",
+        "name": "vgr_gripped",
+        "func": "msg.payload = msg.payload.part_gripped ? \"YES\" : \"NO\";\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 340,
+        "wires": [
+            [
+                "e3fa9c880a482be2"
+            ]
+        ]
+    },
+    {
+        "id": "5185a3d6a0cf9944",
+        "type": "function",
+        "z": "0eaaeda53b183f46",
+        "name": "vgr_fault",
+        "func": "msg.payload = msg.payload.fault || \"OK\";\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 300,
+        "wires": [
+            [
+                "230db61b85ec6c93"
+            ]
+        ]
+    },
+    {
+        "id": "b32738f74fce65e7",
+        "type": "ui_button",
+        "z": "0eaaeda53b183f46",
+        "name": "",
+        "group": "d91842f7a92663b8",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "GO OVEN",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 150,
+        "y": 380,
+        "wires": [
+            [
+                "889c2a0c2fc94dc9"
+            ]
+        ]
+    },
+    {
+        "id": "65d5c69dc45419d0",
+        "type": "ui_button",
+        "z": "0eaaeda53b183f46",
+        "name": "",
+        "group": "d91842f7a92663b8",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "GO TABLE",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "num",
+        "topic": "stf/vgr/cmd/go_table",
+        "topicType": "msg",
+        "x": 170,
+        "y": 460,
+        "wires": [
+            [
+                "c7132e8ff9cce6ac"
+            ]
+        ]
+    },
+    {
+        "id": "511d1b0f6768c1ef",
+        "type": "ui_button",
+        "z": "0eaaeda53b183f46",
+        "name": "",
+        "group": "d91842f7a92663b8",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "RESET",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "num",
+        "topic": "stf/vgr/cmd/reset",
+        "topicType": "msg",
+        "x": 220,
+        "y": 580,
+        "wires": [
+            [
+                "ae529e933f6b6f35"
+            ]
+        ]
+    },
+    {
+        "id": "2c055aa43f574648",
+        "type": "ui_button",
+        "z": "0eaaeda53b183f46",
+        "name": "",
+        "group": "d91842f7a92663b8",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "PICK",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "num",
+        "topic": "stf/vgr/cmd/pick",
+        "topicType": "msg",
+        "x": 210,
+        "y": 520,
+        "wires": [
+            [
+                "e36e8433af4d395a"
+            ]
+        ]
+    },
+    {
+        "id": "71909d120a294db2",
+        "type": "ui_button",
+        "z": "0eaaeda53b183f46",
+        "name": "",
+        "group": "d91842f7a92663b8",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "RELEASE",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "num",
+        "topic": "stf/vgr/cmd/release",
+        "topicType": "msg",
+        "x": 150,
+        "y": 660,
+        "wires": [
+            [
+                "7854e4233b24b08a"
+            ]
+        ]
+    },
+    {
+        "id": "889c2a0c2fc94dc9",
+        "type": "mqtt out",
+        "z": "0eaaeda53b183f46",
+        "name": "",
+        "topic": "stf/vgr/cmd/go_oven",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "87d849f528acb8d9",
+        "x": 380,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "9ba2cb6a8b4e7a35",
+        "type": "ui_text",
+        "z": "0eaaeda53b183f46",
+        "group": "d91842f7a92663b8",
+        "order": 8,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Vacuum",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 900,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "230db61b85ec6c93",
+        "type": "ui_text",
+        "z": "0eaaeda53b183f46",
+        "group": "d91842f7a92663b8",
+        "order": 9,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Gripped",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 900,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "e3fa9c880a482be2",
+        "type": "ui_text",
+        "z": "0eaaeda53b183f46",
+        "group": "d91842f7a92663b8",
+        "order": 10,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Fault",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 890,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "c7132e8ff9cce6ac",
+        "type": "mqtt out",
+        "z": "0eaaeda53b183f46",
+        "name": "",
+        "topic": "stf/vgr/cmd/go_table",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "87d849f528acb8d9",
+        "x": 380,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "e36e8433af4d395a",
+        "type": "mqtt out",
+        "z": "0eaaeda53b183f46",
+        "name": "",
+        "topic": "stf/vgr/cmd/pick",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "87d849f528acb8d9",
+        "x": 380,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "7854e4233b24b08a",
+        "type": "mqtt out",
+        "z": "0eaaeda53b183f46",
+        "name": "",
+        "topic": "stf/vgr/cmd/release",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "87d849f528acb8d9",
+        "x": 410,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "ae529e933f6b6f35",
+        "type": "mqtt out",
+        "z": "0eaaeda53b183f46",
+        "name": "",
+        "topic": "stf/vgr/cmd/reset",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "87d849f528acb8d9",
+        "x": 400,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "87d849f528acb8d9",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "d91842f7a92663b8",
+        "type": "ui_group",
+        "name": "VGR Panel",
+        "tab": "04b3f5b8a0a30ab9",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "04b3f5b8a0a30ab9",
+        "type": "ui_tab",
+        "name": "Vacuum Gripper",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "7d87831b31168400",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-dashboard": "3.6.6"
+        }
+    }
+]
