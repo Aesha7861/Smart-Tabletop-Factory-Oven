@@ -1,0 +1,802 @@
+[
+    {
+        "id": "53b78696e854e976",
+        "type": "tab",
+        "label": "oven",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "9ae0d32d3926f37e",
+        "type": "mqtt in",
+        "z": "53b78696e854e976",
+        "name": "",
+        "topic": "stf/oven_station/status",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "87d849f528acb8d9",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 100,
+        "wires": [
+            [
+                "89fa37fcf81a1d44"
+            ]
+        ]
+    },
+    {
+        "id": "89fa37fcf81a1d44",
+        "type": "json",
+        "z": "53b78696e854e976",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 180,
+        "y": 200,
+        "wires": [
+            [
+                "38d59e46394dd4ce",
+                "dc0b821db627c53d",
+                "7b42dca0a65337bb",
+                "9ae875d08356fa99",
+                "c1d0b67fc85a25ab",
+                "ae2e28e0d51a7469",
+                "03fb28ab05cd17a8",
+                "4658385284276670"
+            ]
+        ]
+    },
+    {
+        "id": "38d59e46394dd4ce",
+        "type": "debug",
+        "z": "53b78696e854e976",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 150,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "e7b4b9b25fb787e3",
+        "type": "ui_text",
+        "z": "53b78696e854e976",
+        "group": "06d02e7870813f85",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "text",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 310,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "7b42dca0a65337bb",
+        "type": "function",
+        "z": "53b78696e854e976",
+        "name": "temp_current",
+        "func": "// msg.payload is the full JSON object coming from MQTT->json\nconst t = Number(msg.payload.temp_actual);\n\nif (Number.isNaN(t)) {\n    return null;   // drop bad values\n}\n\nmsg.payload = Math.round(t * 100) / 100;  // 2 decimals, stays a number\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 160,
+        "wires": [
+            [
+                "87f633e6b51d0244"
+            ]
+        ]
+    },
+    {
+        "id": "dc0b821db627c53d",
+        "type": "function",
+        "z": "53b78696e854e976",
+        "name": "state",
+        "func": "msg.payload = msg.payload.state;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 100,
+        "wires": [
+            [
+                "dec3a6260ec2559e"
+            ]
+        ]
+    },
+    {
+        "id": "c1d0b67fc85a25ab",
+        "type": "function",
+        "z": "53b78696e854e976",
+        "name": "fault",
+        "func": "msg.payload = msg.payload.fault || \"OK\";\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 280,
+        "wires": [
+            [
+                "66669eb7bce0d93c"
+            ]
+        ]
+    },
+    {
+        "id": "9ae875d08356fa99",
+        "type": "function",
+        "z": "53b78696e854e976",
+        "name": "bake_remaining",
+        "func": "msg.payload = msg.payload.bake_remaining_s;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 220,
+        "wires": [
+            [
+                "5b71719eb87d6fc8"
+            ]
+        ]
+    },
+    {
+        "id": "66669eb7bce0d93c",
+        "type": "ui_text",
+        "z": "53b78696e854e976",
+        "group": "06d02e7870813f85",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Fault",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 510,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "5b71719eb87d6fc8",
+        "type": "ui_text",
+        "z": "53b78696e854e976",
+        "group": "06d02e7870813f85",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Bake Remaining (s)",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 590,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "dec3a6260ec2559e",
+        "type": "ui_text",
+        "z": "53b78696e854e976",
+        "group": "06d02e7870813f85",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "State",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 530,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "87f633e6b51d0244",
+        "type": "ui_gauge",
+        "z": "53b78696e854e976",
+        "name": "",
+        "group": "06d02e7870813f85",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temp (°C)",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "250",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 560,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "ae2e28e0d51a7469",
+        "type": "function",
+        "z": "53b78696e854e976",
+        "name": "temp_chart",
+        "func": "msg.topic = \"Temp\";\nmsg.payload = Number(msg.payload.temp_actual);\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 340,
+        "wires": [
+            [
+                "1585a616375a51ea"
+            ]
+        ]
+    },
+    {
+        "id": "1585a616375a51ea",
+        "type": "ui_chart",
+        "z": "53b78696e854e976",
+        "name": "",
+        "group": "06d02e7870813f85",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "label": "Temperature Trend",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 570,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "658538b057f0839b",
+        "type": "ui_button",
+        "z": "53b78696e854e976",
+        "name": "",
+        "group": "06d02e7870813f85",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "START",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "str",
+        "topic": "stf/oven_station/cmd/startup",
+        "topicType": "msg",
+        "x": 120,
+        "y": 400,
+        "wires": [
+            [
+                "2524737cb1102de9"
+            ]
+        ]
+    },
+    {
+        "id": "76f06e961d8b9f2b",
+        "type": "ui_button",
+        "z": "53b78696e854e976",
+        "name": "",
+        "group": "06d02e7870813f85",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "STOP",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "str",
+        "topic": "stf/oven_station/cmd/stop",
+        "topicType": "msg",
+        "x": 110,
+        "y": 440,
+        "wires": [
+            [
+                "5d6782f20cb5b75b"
+            ]
+        ]
+    },
+    {
+        "id": "9c9837d346543f38",
+        "type": "ui_button",
+        "z": "53b78696e854e976",
+        "name": "",
+        "group": "06d02e7870813f85",
+        "order": 8,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "RESET",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "str",
+        "topic": "stf/oven_station/cmd/reset",
+        "topicType": "msg",
+        "x": 120,
+        "y": 480,
+        "wires": [
+            [
+                "a879a42b686bf0a7"
+            ]
+        ]
+    },
+    {
+        "id": "d29c660c2b3a7003",
+        "type": "ui_button",
+        "z": "53b78696e854e976",
+        "name": "",
+        "group": "06d02e7870813f85",
+        "order": 9,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "INJECT FAULT",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 100,
+        "y": 520,
+        "wires": [
+            [
+                "0e7662168e5e5d6c"
+            ]
+        ]
+    },
+    {
+        "id": "2524737cb1102de9",
+        "type": "mqtt out",
+        "z": "53b78696e854e976",
+        "name": "",
+        "topic": "stf/oven_station/cmd/startup",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "87d849f528acb8d9",
+        "x": 340,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "5d6782f20cb5b75b",
+        "type": "mqtt out",
+        "z": "53b78696e854e976",
+        "name": "",
+        "topic": "stf/oven_station/cmd/shutdown",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "87d849f528acb8d9",
+        "x": 350,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "a879a42b686bf0a7",
+        "type": "mqtt out",
+        "z": "53b78696e854e976",
+        "name": "",
+        "topic": "stf/oven_station/cmd/reset",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "87d849f528acb8d9",
+        "x": 330,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "0e7662168e5e5d6c",
+        "type": "mqtt out",
+        "z": "53b78696e854e976",
+        "name": "",
+        "topic": "stf/oven/cmd/inject_fault",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "87d849f528acb8d9",
+        "x": 330,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "eddf8f8d8fb16af5",
+        "type": "ui_numeric",
+        "z": "53b78696e854e976",
+        "name": "",
+        "label": "Set Temp",
+        "tooltip": "",
+        "group": "06d02e7870813f85",
+        "order": 10,
+        "width": 0,
+        "height": 0,
+        "wrap": false,
+        "passthru": true,
+        "topic": "topic",
+        "topicType": "msg",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "250",
+        "step": 1,
+        "className": "",
+        "x": 120,
+        "y": 580,
+        "wires": [
+            [
+                "ac25c5a14142051b"
+            ]
+        ]
+    },
+    {
+        "id": "76219d8df729e2d3",
+        "type": "mqtt out",
+        "z": "53b78696e854e976",
+        "name": "",
+        "topic": "stf/oven_station/cmd/set_temperature",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "87d849f528acb8d9",
+        "x": 670,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "b72b1bd6ad788628",
+        "type": "mqtt out",
+        "z": "53b78696e854e976",
+        "name": "",
+        "topic": "stf/oven_station/cmd/set_bake_time",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "87d849f528acb8d9",
+        "x": 700,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "e4c577cce088529f",
+        "type": "ui_numeric",
+        "z": "53b78696e854e976",
+        "name": "",
+        "label": "Bake Time (s)",
+        "tooltip": "",
+        "group": "06d02e7870813f85",
+        "order": 11,
+        "width": 0,
+        "height": 0,
+        "wrap": false,
+        "passthru": true,
+        "topic": "topic",
+        "topicType": "msg",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "50",
+        "step": 1,
+        "className": "",
+        "x": 120,
+        "y": 620,
+        "wires": [
+            [
+                "3f045bea2f981406",
+                "100fb10a1257ecd6"
+            ]
+        ]
+    },
+    {
+        "id": "ac25c5a14142051b",
+        "type": "function",
+        "z": "53b78696e854e976",
+        "name": "force_number_setpoint",
+        "func": "msg.payload = Number(msg.payload);\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 580,
+        "wires": [
+            [
+                "76219d8df729e2d3"
+            ]
+        ]
+    },
+    {
+        "id": "3f045bea2f981406",
+        "type": "function",
+        "z": "53b78696e854e976",
+        "name": "force_number_bake_time",
+        "func": "msg.payload = Number(msg.payload);\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 640,
+        "wires": [
+            [
+                "b72b1bd6ad788628"
+            ]
+        ]
+    },
+    {
+        "id": "03fb28ab05cd17a8",
+        "type": "function",
+        "z": "53b78696e854e976",
+        "name": "status_led",
+        "func": "const s = (msg.payload.state || \"\").toUpperCase();\n\nif (s === \"BAKING\") msg.payload = \"🟢 RUNNING\";\nelse if (s === \"LOADING\" || s === \"UNLOADING\") msg.payload = \"🟠 BUSY\";\nelse if (s === \"FAULT\") msg.payload = \"🔴 FAULT\";\nelse msg.payload = \"⚪ IDLE\";\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 460,
+        "wires": [
+            [
+                "0573cf4c366e0cd0"
+            ]
+        ]
+    },
+    {
+        "id": "0573cf4c366e0cd0",
+        "type": "ui_text",
+        "z": "53b78696e854e976",
+        "group": "06d02e7870813f85",
+        "order": 12,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Status",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 790,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "100fb10a1257ecd6",
+        "type": "function",
+        "z": "53b78696e854e976",
+        "name": "store_bake_time",
+        "func": "flow.set(\"bake_time_s\", Number(msg.payload));\nreturn null;   // don't send further\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 700,
+        "wires": [
+            [
+                "b72b1bd6ad788628"
+            ]
+        ]
+    },
+    {
+        "id": "4658385284276670",
+        "type": "function",
+        "z": "53b78696e854e976",
+        "name": "bake_progress_pct",
+        "func": "let total = Number(msg.payload.bake_time_s || 0);\nlet rem = Number(msg.payload.bake_remaining_s || 0);\n\nif (total <= 0) {\n    msg.payload = 0;\n    return msg;\n}\n\nlet pct = Math.round(100 * (total - rem) / total);\nmsg.payload = Math.max(0, Math.min(100, pct));\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 400,
+        "wires": [
+            [
+                "ec969d3d73c35935"
+            ]
+        ]
+    },
+    {
+        "id": "ec969d3d73c35935",
+        "type": "ui_gauge",
+        "z": "53b78696e854e976",
+        "name": "",
+        "group": "06d02e7870813f85",
+        "order": 13,
+        "width": 0,
+        "height": 0,
+        "gtype": "wave",
+        "title": "Bake Progress",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 920,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "87d849f528acb8d9",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "06d02e7870813f85",
+        "type": "ui_group",
+        "name": "Oven Status",
+        "tab": "ea74e58970d89316",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "ea74e58970d89316",
+        "type": "ui_tab",
+        "name": "STF Oven",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "a84b3a72a6a95b5b",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-dashboard": "3.6.6"
+        }
+    }
+]
