@@ -1,0 +1,1962 @@
+[
+    {
+        "id": "53b78696e854e976",
+        "type": "tab",
+        "label": "oven",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "0eaaeda53b183f46",
+        "type": "tab",
+        "label": "Vacuum Gripper",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "ee6814be66175413",
+        "type": "tab",
+        "label": "Turntable Station",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "13e81bc0e31599b1",
+        "type": "tab",
+        "label": "Conveyor Station",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "87d849f528acb8d9",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "ba2a1d3199276873",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "ea74e58970d89316",
+        "type": "ui_tab",
+        "name": "STF Oven",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "06d02e7870813f85",
+        "type": "ui_group",
+        "name": "Oven Status",
+        "tab": "ea74e58970d89316",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "04b3f5b8a0a30ab9",
+        "type": "ui_tab",
+        "name": "Vacuum Gripper",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "d8ee94f66fa224ee",
+        "type": "ui_tab",
+        "name": "Turntable",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "35652e5a8301d883",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "91c943ce4c02fc1e",
+        "type": "ui_tab",
+        "name": "STF Conveyor Belt",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "d91842f7a92663b8",
+        "type": "ui_group",
+        "name": "VGR Panel",
+        "tab": "04b3f5b8a0a30ab9",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "aa69f396bbc27b53",
+        "type": "ui_group",
+        "z": "ee6814be66175413",
+        "name": "Turntable Status",
+        "tab": "d8ee94f66fa224ee",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "dbd09dfc5f8ffa6e",
+        "type": "ui_group",
+        "z": "ee6814be66175413",
+        "name": "Position Sensors",
+        "tab": "d8ee94f66fa224ee",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "74ddbd71c723d02f",
+        "type": "ui_group",
+        "z": "ee6814be66175413",
+        "name": "Controls",
+        "tab": "d8ee94f66fa224ee",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "d74ed307593b0ba7",
+        "type": "ui_group",
+        "name": "Conveyor Status",
+        "tab": "91c943ce4c02fc1e",
+        "order": 1,
+        "disp": true,
+        "width": "7",
+        "collapse": true,
+        "className": ""
+    },
+    {
+        "id": "9ae0d32d3926f37e",
+        "type": "mqtt in",
+        "z": "53b78696e854e976",
+        "name": "",
+        "topic": "stf/oven_station/status",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "87d849f528acb8d9",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 100,
+        "wires": [
+            [
+                "89fa37fcf81a1d44"
+            ]
+        ]
+    },
+    {
+        "id": "89fa37fcf81a1d44",
+        "type": "json",
+        "z": "53b78696e854e976",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 180,
+        "y": 200,
+        "wires": [
+            [
+                "38d59e46394dd4ce",
+                "dc0b821db627c53d",
+                "7b42dca0a65337bb",
+                "9ae875d08356fa99",
+                "c1d0b67fc85a25ab",
+                "ae2e28e0d51a7469",
+                "03fb28ab05cd17a8",
+                "4658385284276670"
+            ]
+        ]
+    },
+    {
+        "id": "38d59e46394dd4ce",
+        "type": "debug",
+        "z": "53b78696e854e976",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 150,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "e7b4b9b25fb787e3",
+        "type": "ui_text",
+        "z": "53b78696e854e976",
+        "group": "06d02e7870813f85",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "text",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 310,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "7b42dca0a65337bb",
+        "type": "function",
+        "z": "53b78696e854e976",
+        "name": "temp_current",
+        "func": "// msg.payload is the full JSON object coming from MQTT->json\nconst t = Number(msg.payload.temp_actual);\n\nif (Number.isNaN(t)) {\n    return null;   // drop bad values\n}\n\nmsg.payload = Math.round(t * 100) / 100;  // 2 decimals, stays a number\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 160,
+        "wires": [
+            [
+                "87f633e6b51d0244"
+            ]
+        ]
+    },
+    {
+        "id": "dc0b821db627c53d",
+        "type": "function",
+        "z": "53b78696e854e976",
+        "name": "state",
+        "func": "msg.payload = msg.payload.state;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 100,
+        "wires": [
+            [
+                "dec3a6260ec2559e"
+            ]
+        ]
+    },
+    {
+        "id": "c1d0b67fc85a25ab",
+        "type": "function",
+        "z": "53b78696e854e976",
+        "name": "fault",
+        "func": "msg.payload = msg.payload.fault || \"OK\";\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 280,
+        "wires": [
+            [
+                "66669eb7bce0d93c"
+            ]
+        ]
+    },
+    {
+        "id": "9ae875d08356fa99",
+        "type": "function",
+        "z": "53b78696e854e976",
+        "name": "bake_remaining",
+        "func": "msg.payload = msg.payload.bake_remaining_s;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 220,
+        "wires": [
+            [
+                "5b71719eb87d6fc8"
+            ]
+        ]
+    },
+    {
+        "id": "66669eb7bce0d93c",
+        "type": "ui_text",
+        "z": "53b78696e854e976",
+        "group": "06d02e7870813f85",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Fault",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 510,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "5b71719eb87d6fc8",
+        "type": "ui_text",
+        "z": "53b78696e854e976",
+        "group": "06d02e7870813f85",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Bake Remaining (s)",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 590,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "dec3a6260ec2559e",
+        "type": "ui_text",
+        "z": "53b78696e854e976",
+        "group": "06d02e7870813f85",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "State",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 530,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "87f633e6b51d0244",
+        "type": "ui_gauge",
+        "z": "53b78696e854e976",
+        "name": "",
+        "group": "06d02e7870813f85",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temp (°C)",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "250",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 560,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "ae2e28e0d51a7469",
+        "type": "function",
+        "z": "53b78696e854e976",
+        "name": "temp_chart",
+        "func": "msg.topic = \"Temp\";\nmsg.payload = Number(msg.payload.temp_actual);\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 340,
+        "wires": [
+            [
+                "1585a616375a51ea"
+            ]
+        ]
+    },
+    {
+        "id": "1585a616375a51ea",
+        "type": "ui_chart",
+        "z": "53b78696e854e976",
+        "name": "",
+        "group": "06d02e7870813f85",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "label": "Temperature Trend",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 570,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "658538b057f0839b",
+        "type": "ui_button",
+        "z": "53b78696e854e976",
+        "name": "",
+        "group": "06d02e7870813f85",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "START",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "str",
+        "topic": "stf/oven_station/cmd/startup",
+        "topicType": "msg",
+        "x": 120,
+        "y": 400,
+        "wires": [
+            [
+                "2524737cb1102de9"
+            ]
+        ]
+    },
+    {
+        "id": "76f06e961d8b9f2b",
+        "type": "ui_button",
+        "z": "53b78696e854e976",
+        "name": "",
+        "group": "06d02e7870813f85",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "STOP",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "str",
+        "topic": "stf/oven_station/cmd/stop",
+        "topicType": "msg",
+        "x": 110,
+        "y": 440,
+        "wires": [
+            [
+                "5d6782f20cb5b75b"
+            ]
+        ]
+    },
+    {
+        "id": "9c9837d346543f38",
+        "type": "ui_button",
+        "z": "53b78696e854e976",
+        "name": "",
+        "group": "06d02e7870813f85",
+        "order": 8,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "RESET",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "str",
+        "topic": "stf/oven_station/cmd/reset",
+        "topicType": "msg",
+        "x": 120,
+        "y": 480,
+        "wires": [
+            [
+                "a879a42b686bf0a7"
+            ]
+        ]
+    },
+    {
+        "id": "d29c660c2b3a7003",
+        "type": "ui_button",
+        "z": "53b78696e854e976",
+        "name": "",
+        "group": "06d02e7870813f85",
+        "order": 9,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "INJECT FAULT",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 100,
+        "y": 520,
+        "wires": [
+            [
+                "0e7662168e5e5d6c"
+            ]
+        ]
+    },
+    {
+        "id": "2524737cb1102de9",
+        "type": "mqtt out",
+        "z": "53b78696e854e976",
+        "name": "",
+        "topic": "stf/oven_station/cmd/startup",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "87d849f528acb8d9",
+        "x": 340,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "5d6782f20cb5b75b",
+        "type": "mqtt out",
+        "z": "53b78696e854e976",
+        "name": "",
+        "topic": "stf/oven_station/cmd/shutdown",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "87d849f528acb8d9",
+        "x": 350,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "a879a42b686bf0a7",
+        "type": "mqtt out",
+        "z": "53b78696e854e976",
+        "name": "",
+        "topic": "stf/oven_station/cmd/reset",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "87d849f528acb8d9",
+        "x": 330,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "0e7662168e5e5d6c",
+        "type": "mqtt out",
+        "z": "53b78696e854e976",
+        "name": "",
+        "topic": "stf/oven/cmd/inject_fault",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "87d849f528acb8d9",
+        "x": 330,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "eddf8f8d8fb16af5",
+        "type": "ui_numeric",
+        "z": "53b78696e854e976",
+        "name": "",
+        "label": "Set Temp",
+        "tooltip": "",
+        "group": "06d02e7870813f85",
+        "order": 10,
+        "width": 0,
+        "height": 0,
+        "wrap": false,
+        "passthru": true,
+        "topic": "topic",
+        "topicType": "msg",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "250",
+        "step": 1,
+        "className": "",
+        "x": 120,
+        "y": 580,
+        "wires": [
+            [
+                "ac25c5a14142051b"
+            ]
+        ]
+    },
+    {
+        "id": "76219d8df729e2d3",
+        "type": "mqtt out",
+        "z": "53b78696e854e976",
+        "name": "",
+        "topic": "stf/oven_station/cmd/set_temperature",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "87d849f528acb8d9",
+        "x": 670,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "b72b1bd6ad788628",
+        "type": "mqtt out",
+        "z": "53b78696e854e976",
+        "name": "",
+        "topic": "stf/oven_station/cmd/set_bake_time",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "87d849f528acb8d9",
+        "x": 700,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "e4c577cce088529f",
+        "type": "ui_numeric",
+        "z": "53b78696e854e976",
+        "name": "",
+        "label": "Bake Time (s)",
+        "tooltip": "",
+        "group": "06d02e7870813f85",
+        "order": 11,
+        "width": 0,
+        "height": 0,
+        "wrap": false,
+        "passthru": true,
+        "topic": "topic",
+        "topicType": "msg",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "50",
+        "step": 1,
+        "className": "",
+        "x": 120,
+        "y": 620,
+        "wires": [
+            [
+                "3f045bea2f981406",
+                "100fb10a1257ecd6"
+            ]
+        ]
+    },
+    {
+        "id": "ac25c5a14142051b",
+        "type": "function",
+        "z": "53b78696e854e976",
+        "name": "force_number_setpoint",
+        "func": "msg.payload = Number(msg.payload);\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 580,
+        "wires": [
+            [
+                "76219d8df729e2d3"
+            ]
+        ]
+    },
+    {
+        "id": "3f045bea2f981406",
+        "type": "function",
+        "z": "53b78696e854e976",
+        "name": "force_number_bake_time",
+        "func": "msg.payload = Number(msg.payload);\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 640,
+        "wires": [
+            [
+                "b72b1bd6ad788628"
+            ]
+        ]
+    },
+    {
+        "id": "03fb28ab05cd17a8",
+        "type": "function",
+        "z": "53b78696e854e976",
+        "name": "status_led",
+        "func": "const s = (msg.payload.state || \"\").toUpperCase();\n\nif (s === \"BAKING\") msg.payload = \"🟢 RUNNING\";\nelse if (s === \"LOADING\" || s === \"UNLOADING\") msg.payload = \"🟠 BUSY\";\nelse if (s === \"FAULT\") msg.payload = \"🔴 FAULT\";\nelse msg.payload = \"⚪ IDLE\";\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 460,
+        "wires": [
+            [
+                "0573cf4c366e0cd0"
+            ]
+        ]
+    },
+    {
+        "id": "0573cf4c366e0cd0",
+        "type": "ui_text",
+        "z": "53b78696e854e976",
+        "group": "06d02e7870813f85",
+        "order": 12,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Status",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 790,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "100fb10a1257ecd6",
+        "type": "function",
+        "z": "53b78696e854e976",
+        "name": "store_bake_time",
+        "func": "flow.set(\"bake_time_s\", Number(msg.payload));\nreturn null;   // don't send further\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 700,
+        "wires": [
+            [
+                "b72b1bd6ad788628"
+            ]
+        ]
+    },
+    {
+        "id": "4658385284276670",
+        "type": "function",
+        "z": "53b78696e854e976",
+        "name": "bake_progress_pct",
+        "func": "let total = Number(msg.payload.bake_time_s || 0);\nlet rem = Number(msg.payload.bake_remaining_s || 0);\n\nif (total <= 0) {\n    msg.payload = 0;\n    return msg;\n}\n\nlet pct = Math.round(100 * (total - rem) / total);\nmsg.payload = Math.max(0, Math.min(100, pct));\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 400,
+        "wires": [
+            [
+                "ec969d3d73c35935"
+            ]
+        ]
+    },
+    {
+        "id": "ec969d3d73c35935",
+        "type": "ui_gauge",
+        "z": "53b78696e854e976",
+        "name": "",
+        "group": "06d02e7870813f85",
+        "order": 13,
+        "width": 0,
+        "height": 0,
+        "gtype": "wave",
+        "title": "Bake Progress",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 920,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "ab07f45d523e2273",
+        "type": "mqtt in",
+        "z": "0eaaeda53b183f46",
+        "name": "",
+        "topic": "stf/oven_station/status",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "87d849f528acb8d9",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 400,
+        "y": 60,
+        "wires": [
+            [
+                "f032fc1848dfe199"
+            ]
+        ]
+    },
+    {
+        "id": "f032fc1848dfe199",
+        "type": "json",
+        "z": "0eaaeda53b183f46",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 520,
+        "y": 200,
+        "wires": [
+            [
+                "39be11965ceb89af",
+                "2fde57a654ec112e",
+                "c3f47120e8ffeb63",
+                "5185a3d6a0cf9944",
+                "52205e39df8273cb"
+            ]
+        ]
+    },
+    {
+        "id": "39be11965ceb89af",
+        "type": "debug",
+        "z": "0eaaeda53b183f46",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "2fde57a654ec112e",
+        "type": "function",
+        "z": "0eaaeda53b183f46",
+        "name": "vgr_state",
+        "func": "const s = msg.payload.state || \"\";\n\nconst vgrStates = [\n    \"GRIPPER_TO_OVEN\",\n    \"GRIPPER_LOWER_OVEN\",\n    \"GRIPPER_VACUUM_ON\",\n    \"GRIPPER_RAISE_OVEN\",\n    \"GRIPPER_TO_TURNTABLE\",\n    \"GRIPPER_LOWER_TABLE\",\n    \"GRIPPER_RELEASE\",\n    \"GRIPPER_RAISE_TABLE\"\n];\n\nmsg.payload = vgrStates.includes(s) ? s : \"IDLE\";\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 630,
+        "y": 100,
+        "wires": [
+            [
+                "aa436286f0f0045b"
+            ]
+        ]
+    },
+    {
+        "id": "aa436286f0f0045b",
+        "type": "ui_text",
+        "z": "0eaaeda53b183f46",
+        "group": "d91842f7a92663b8",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "State",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 810,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "c3f47120e8ffeb63",
+        "type": "function",
+        "z": "0eaaeda53b183f46",
+        "name": "vgr_vacuum",
+        "func": "msg.payload = msg.payload.vacuum_on ? \"ON\" : \"OFF\";\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 240,
+        "wires": [
+            [
+                "9ba2cb6a8b4e7a35"
+            ]
+        ]
+    },
+    {
+        "id": "52205e39df8273cb",
+        "type": "function",
+        "z": "0eaaeda53b183f46",
+        "name": "vgr_gripped",
+        "func": "msg.payload = msg.payload.part_gripped ? \"YES\" : \"NO\";\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 340,
+        "wires": [
+            [
+                "e3fa9c880a482be2"
+            ]
+        ]
+    },
+    {
+        "id": "5185a3d6a0cf9944",
+        "type": "function",
+        "z": "0eaaeda53b183f46",
+        "name": "vgr_fault",
+        "func": "msg.payload = msg.payload.fault || \"OK\";\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 300,
+        "wires": [
+            [
+                "230db61b85ec6c93"
+            ]
+        ]
+    },
+    {
+        "id": "b32738f74fce65e7",
+        "type": "ui_button",
+        "z": "0eaaeda53b183f46",
+        "name": "",
+        "group": "d91842f7a92663b8",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "GO OVEN",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 150,
+        "y": 380,
+        "wires": [
+            [
+                "889c2a0c2fc94dc9"
+            ]
+        ]
+    },
+    {
+        "id": "65d5c69dc45419d0",
+        "type": "ui_button",
+        "z": "0eaaeda53b183f46",
+        "name": "",
+        "group": "d91842f7a92663b8",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "GO TABLE",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "num",
+        "topic": "stf/vgr/cmd/go_table",
+        "topicType": "msg",
+        "x": 170,
+        "y": 460,
+        "wires": [
+            [
+                "c7132e8ff9cce6ac"
+            ]
+        ]
+    },
+    {
+        "id": "511d1b0f6768c1ef",
+        "type": "ui_button",
+        "z": "0eaaeda53b183f46",
+        "name": "",
+        "group": "d91842f7a92663b8",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "RESET",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "num",
+        "topic": "stf/vgr/cmd/reset",
+        "topicType": "msg",
+        "x": 220,
+        "y": 580,
+        "wires": [
+            [
+                "ae529e933f6b6f35"
+            ]
+        ]
+    },
+    {
+        "id": "2c055aa43f574648",
+        "type": "ui_button",
+        "z": "0eaaeda53b183f46",
+        "name": "",
+        "group": "d91842f7a92663b8",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "PICK",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "num",
+        "topic": "stf/vgr/cmd/pick",
+        "topicType": "msg",
+        "x": 210,
+        "y": 520,
+        "wires": [
+            [
+                "e36e8433af4d395a"
+            ]
+        ]
+    },
+    {
+        "id": "71909d120a294db2",
+        "type": "ui_button",
+        "z": "0eaaeda53b183f46",
+        "name": "",
+        "group": "d91842f7a92663b8",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "RELEASE",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "num",
+        "topic": "stf/vgr/cmd/release",
+        "topicType": "msg",
+        "x": 150,
+        "y": 660,
+        "wires": [
+            [
+                "7854e4233b24b08a"
+            ]
+        ]
+    },
+    {
+        "id": "889c2a0c2fc94dc9",
+        "type": "mqtt out",
+        "z": "0eaaeda53b183f46",
+        "name": "",
+        "topic": "stf/vgr/cmd/go_oven",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "87d849f528acb8d9",
+        "x": 380,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "9ba2cb6a8b4e7a35",
+        "type": "ui_text",
+        "z": "0eaaeda53b183f46",
+        "group": "d91842f7a92663b8",
+        "order": 8,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Vacuum",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 900,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "230db61b85ec6c93",
+        "type": "ui_text",
+        "z": "0eaaeda53b183f46",
+        "group": "d91842f7a92663b8",
+        "order": 9,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Gripped",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 900,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "e3fa9c880a482be2",
+        "type": "ui_text",
+        "z": "0eaaeda53b183f46",
+        "group": "d91842f7a92663b8",
+        "order": 10,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Fault",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 890,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "c7132e8ff9cce6ac",
+        "type": "mqtt out",
+        "z": "0eaaeda53b183f46",
+        "name": "",
+        "topic": "stf/vgr/cmd/go_table",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "87d849f528acb8d9",
+        "x": 380,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "e36e8433af4d395a",
+        "type": "mqtt out",
+        "z": "0eaaeda53b183f46",
+        "name": "",
+        "topic": "stf/vgr/cmd/pick",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "87d849f528acb8d9",
+        "x": 380,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "7854e4233b24b08a",
+        "type": "mqtt out",
+        "z": "0eaaeda53b183f46",
+        "name": "",
+        "topic": "stf/vgr/cmd/release",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "87d849f528acb8d9",
+        "x": 410,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "ae529e933f6b6f35",
+        "type": "mqtt out",
+        "z": "0eaaeda53b183f46",
+        "name": "",
+        "topic": "stf/vgr/cmd/reset",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "87d849f528acb8d9",
+        "x": 400,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "034cc2d3a2764dd4",
+        "type": "mqtt in",
+        "z": "ee6814be66175413",
+        "name": "IN: stf/turntable/status",
+        "topic": "stf/oven_station/status",
+        "qos": "0",
+        "datatype": "json",
+        "broker": "87d849f528acb8d9",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 160,
+        "y": 140,
+        "wires": [
+            [
+                "d021475bfd49e9bd",
+                "219229df328adab4",
+                "88d9fbbaf3a126ce",
+                "e744e23b1a729eda"
+            ]
+        ]
+    },
+    {
+        "id": "d021475bfd49e9bd",
+        "type": "ui_text",
+        "z": "ee6814be66175413",
+        "group": "aa69f396bbc27b53",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Current State",
+        "format": "{{msg.payload.state}}",
+        "layout": "row-spread",
+        "x": 460,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "219229df328adab4",
+        "type": "function",
+        "z": "ee6814be66175413",
+        "name": "Parse Vacuum (I5)",
+        "func": "msg.payload = msg.payload.sensors.vacuum_pos ? \"🟢 ACTIVE\" : \"⚪\";\nreturn msg;",
+        "outputs": 1,
+        "x": 470,
+        "y": 220,
+        "wires": [
+            [
+                "bcf824aa3b3f22d3"
+            ]
+        ]
+    },
+    {
+        "id": "88d9fbbaf3a126ce",
+        "type": "function",
+        "z": "ee6814be66175413",
+        "name": "Parse Saw (I14)",
+        "func": "msg.payload = msg.payload.sensors.saw_pos ? \"🟢 ACTIVE\" : \"⚪\";\nreturn msg;",
+        "outputs": 1,
+        "x": 460,
+        "y": 280,
+        "wires": [
+            [
+                "93530109d46ffaa4"
+            ]
+        ]
+    },
+    {
+        "id": "e744e23b1a729eda",
+        "type": "function",
+        "z": "ee6814be66175413",
+        "name": "Parse Belt (I6)",
+        "func": "msg.payload = msg.payload.sensors.belt_pos ? \"🟢 ACTIVE\" : \"⚪\";\nreturn msg;",
+        "outputs": 1,
+        "x": 460,
+        "y": 340,
+        "wires": [
+            [
+                "39bf16158ca8c656"
+            ]
+        ]
+    },
+    {
+        "id": "bcf824aa3b3f22d3",
+        "type": "ui_text",
+        "z": "ee6814be66175413",
+        "group": "dbd09dfc5f8ffa6e",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Position: Vacuum (I5)",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 700,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "93530109d46ffaa4",
+        "type": "ui_text",
+        "z": "ee6814be66175413",
+        "group": "dbd09dfc5f8ffa6e",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Position: Saw (I14)",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 690,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "39bf16158ca8c656",
+        "type": "ui_text",
+        "z": "ee6814be66175413",
+        "group": "dbd09dfc5f8ffa6e",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Position: Belt (I6)",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 690,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "c66d62c428ab8114",
+        "type": "ui_button",
+        "z": "ee6814be66175413",
+        "name": "",
+        "group": "74ddbd71c723d02f",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "START CYCLE (Manual)",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "payload": "1",
+        "payloadType": "str",
+        "topic": "stf/turntable/cmd/start",
+        "x": 160,
+        "y": 440,
+        "wires": [
+            [
+                "70ad66a09a4dd3c5"
+            ]
+        ]
+    },
+    {
+        "id": "273fbe0bc7212d0c",
+        "type": "ui_button",
+        "z": "ee6814be66175413",
+        "name": "",
+        "group": "74ddbd71c723d02f",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "RESET",
+        "tooltip": "",
+        "color": "white",
+        "bgcolor": "red",
+        "payload": "1",
+        "payloadType": "str",
+        "topic": "stf/turntable/cmd/reset",
+        "x": 120,
+        "y": 480,
+        "wires": [
+            [
+                "70ad66a09a4dd3c5"
+            ]
+        ]
+    },
+    {
+        "id": "70ad66a09a4dd3c5",
+        "type": "mqtt out",
+        "z": "ee6814be66175413",
+        "name": "OUT: Commands",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "broker": "87d849f528acb8d9",
+        "x": 450,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "2b7eeabbbd5e3943",
+        "type": "mqtt in",
+        "z": "13e81bc0e31599b1",
+        "name": "",
+        "topic": "stf/oven_station/status",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "35652e5a8301d883",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 160,
+        "y": 320,
+        "wires": [
+            [
+                "0c33fca7ffde9fac"
+            ]
+        ]
+    },
+    {
+        "id": "0c33fca7ffde9fac",
+        "type": "json",
+        "z": "13e81bc0e31599b1",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 350,
+        "y": 320,
+        "wires": [
+            [
+                "ce13353b49372b64",
+                "9fa478cd843fa5a6",
+                "6a2bc77399ddbbd4",
+                "35e79c160b624233"
+            ]
+        ]
+    },
+    {
+        "id": "ce13353b49372b64",
+        "type": "function",
+        "z": "13e81bc0e31599b1",
+        "name": "State",
+        "func": "const s = msg.payload.state || \"\";\nmsg.payload = (s === \"CONVEYOR_RUN\") ? \"CONVEYOR_RUN\" : \"IDLE\";\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 180,
+        "wires": [
+            [
+                "88b12613aa25c49c"
+            ]
+        ]
+    },
+    {
+        "id": "9fa478cd843fa5a6",
+        "type": "function",
+        "z": "13e81bc0e31599b1",
+        "name": "I3 sensor",
+        "func": "msg.payload = msg.payload.I3_end_sensor ? \"TRIGGERED\" : \"CLEAR\";\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 360,
+        "wires": [
+            [
+                "d7be8edfbd533960"
+            ]
+        ]
+    },
+    {
+        "id": "6a2bc77399ddbbd4",
+        "type": "function",
+        "z": "13e81bc0e31599b1",
+        "name": "Cookie present",
+        "func": "// Only say YES if the piece is there AND the motor is actually running\nif (msg.payload.motor === true && msg.payload.piece_present === true) {\n    msg.payload = \"YES\";\n} else {\n    // Default to NO if motor is off, even if sensor is triggered\n    msg.payload = \"NO\";\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 440,
+        "wires": [
+            [
+                "89979117143c1bfb"
+            ]
+        ]
+    },
+    {
+        "id": "88b12613aa25c49c",
+        "type": "ui_text",
+        "z": "13e81bc0e31599b1",
+        "group": "d74ed307593b0ba7",
+        "order": 14,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "State",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 750,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "d7be8edfbd533960",
+        "type": "ui_text",
+        "z": "13e81bc0e31599b1",
+        "group": "d74ed307593b0ba7",
+        "order": 16,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "End Sensor (I3)",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 780,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "89979117143c1bfb",
+        "type": "ui_text",
+        "z": "13e81bc0e31599b1",
+        "group": "d74ed307593b0ba7",
+        "order": 17,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Cookie Present",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 780,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "692786808bb63fde",
+        "type": "ui_button",
+        "z": "13e81bc0e31599b1",
+        "name": "",
+        "group": "d74ed307593b0ba7",
+        "order": 18,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "INJECT PIECE",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 160,
+        "y": 600,
+        "wires": [
+            [
+                "2aba32598d5bebfe"
+            ]
+        ]
+    },
+    {
+        "id": "2aba32598d5bebfe",
+        "type": "mqtt out",
+        "z": "13e81bc0e31599b1",
+        "name": "",
+        "topic": "stf/conveyor/cmd/inject_piece",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "87d849f528acb8d9",
+        "x": 590,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "786b4c902d34d6a0",
+        "type": "ui_button",
+        "z": "13e81bc0e31599b1",
+        "name": "",
+        "group": "d74ed307593b0ba7",
+        "order": 19,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "RESET",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "stf/conveyor/cmd/reset",
+        "topicType": "msg",
+        "x": 180,
+        "y": 680,
+        "wires": [
+            [
+                "411b9bac5ea8a043"
+            ]
+        ]
+    },
+    {
+        "id": "35e79c160b624233",
+        "type": "function",
+        "z": "13e81bc0e31599b1",
+        "name": "notify_turntable_reset",
+        "func": "const prev = flow.get(\"prev_I3\") || 0;\nconst curr = msg.payload.I3_end_sensor;\n\nflow.set(\"prev_I3\", curr);\n\n// Detect falling edge of I3 (after delayed stop)\nif (prev === 1 && curr === 0) {\n    return {\n        topic: \"stf/turntable/cmd/reset\",\n        payload: \"1\"\n    };\n}\n\nreturn null;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 520,
+        "wires": [
+            [
+                "ad6ae6c7518f2533"
+            ]
+        ]
+    },
+    {
+        "id": "ad6ae6c7518f2533",
+        "type": "mqtt out",
+        "z": "13e81bc0e31599b1",
+        "name": "",
+        "topic": "stf/turntable/cmd/reset",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "87d849f528acb8d9",
+        "x": 920,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "411b9bac5ea8a043",
+        "type": "mqtt out",
+        "z": "13e81bc0e31599b1",
+        "name": "",
+        "topic": "stf/conveyor/cmd/reset",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "87d849f528acb8d9",
+        "x": 560,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "09be9597faf75f3a",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-dashboard": "3.6.6"
+        }
+    }
+]
