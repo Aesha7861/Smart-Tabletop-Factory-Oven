@@ -1,0 +1,380 @@
+[
+    {
+        "id": "13e81bc0e31599b1",
+        "type": "tab",
+        "label": "Conveyor Station",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "2b7eeabbbd5e3943",
+        "type": "mqtt in",
+        "z": "13e81bc0e31599b1",
+        "name": "",
+        "topic": "stf/oven_station/status",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "35652e5a8301d883",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 160,
+        "y": 320,
+        "wires": [
+            [
+                "0c33fca7ffde9fac"
+            ]
+        ]
+    },
+    {
+        "id": "0c33fca7ffde9fac",
+        "type": "json",
+        "z": "13e81bc0e31599b1",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 350,
+        "y": 320,
+        "wires": [
+            [
+                "ce13353b49372b64",
+                "9fa478cd843fa5a6",
+                "6a2bc77399ddbbd4",
+                "35e79c160b624233"
+            ]
+        ]
+    },
+    {
+        "id": "ce13353b49372b64",
+        "type": "function",
+        "z": "13e81bc0e31599b1",
+        "name": "State",
+        "func": "const s = msg.payload.state || \"\";\nmsg.payload = (s === \"CONVEYOR_RUN\") ? \"CONVEYOR_RUN\" : \"IDLE\";\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 180,
+        "wires": [
+            [
+                "88b12613aa25c49c"
+            ]
+        ]
+    },
+    {
+        "id": "9fa478cd843fa5a6",
+        "type": "function",
+        "z": "13e81bc0e31599b1",
+        "name": "I3 sensor",
+        "func": "msg.payload = msg.payload.I3_end_sensor ? \"TRIGGERED\" : \"CLEAR\";\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 360,
+        "wires": [
+            [
+                "d7be8edfbd533960"
+            ]
+        ]
+    },
+    {
+        "id": "6a2bc77399ddbbd4",
+        "type": "function",
+        "z": "13e81bc0e31599b1",
+        "name": "Cookie present",
+        "func": "// Only say YES if the piece is there AND the motor is actually running\nif (msg.payload.motor === true && msg.payload.piece_present === true) {\n    msg.payload = \"YES\";\n} else {\n    // Default to NO if motor is off, even if sensor is triggered\n    msg.payload = \"NO\";\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 440,
+        "wires": [
+            [
+                "89979117143c1bfb"
+            ]
+        ]
+    },
+    {
+        "id": "88b12613aa25c49c",
+        "type": "ui_text",
+        "z": "13e81bc0e31599b1",
+        "group": "d74ed307593b0ba7",
+        "order": 14,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "State",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 750,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "d7be8edfbd533960",
+        "type": "ui_text",
+        "z": "13e81bc0e31599b1",
+        "group": "d74ed307593b0ba7",
+        "order": 16,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "End Sensor (I3)",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 780,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "89979117143c1bfb",
+        "type": "ui_text",
+        "z": "13e81bc0e31599b1",
+        "group": "d74ed307593b0ba7",
+        "order": 17,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Cookie Present",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 780,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "692786808bb63fde",
+        "type": "ui_button",
+        "z": "13e81bc0e31599b1",
+        "name": "",
+        "group": "d74ed307593b0ba7",
+        "order": 18,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "INJECT PIECE",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 160,
+        "y": 600,
+        "wires": [
+            [
+                "2aba32598d5bebfe"
+            ]
+        ]
+    },
+    {
+        "id": "2aba32598d5bebfe",
+        "type": "mqtt out",
+        "z": "13e81bc0e31599b1",
+        "name": "",
+        "topic": "stf/conveyor/cmd/inject_piece",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "87d849f528acb8d9",
+        "x": 590,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "786b4c902d34d6a0",
+        "type": "ui_button",
+        "z": "13e81bc0e31599b1",
+        "name": "",
+        "group": "d74ed307593b0ba7",
+        "order": 19,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "RESET",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "stf/conveyor/cmd/reset",
+        "topicType": "msg",
+        "x": 180,
+        "y": 680,
+        "wires": [
+            [
+                "411b9bac5ea8a043"
+            ]
+        ]
+    },
+    {
+        "id": "35e79c160b624233",
+        "type": "function",
+        "z": "13e81bc0e31599b1",
+        "name": "notify_turntable_reset",
+        "func": "const prev = flow.get(\"prev_I3\") || 0;\nconst curr = msg.payload.I3_end_sensor;\n\nflow.set(\"prev_I3\", curr);\n\n// Detect falling edge of I3 (after delayed stop)\nif (prev === 1 && curr === 0) {\n    return {\n        topic: \"stf/turntable/cmd/reset\",\n        payload: \"1\"\n    };\n}\n\nreturn null;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 520,
+        "wires": [
+            [
+                "ad6ae6c7518f2533"
+            ]
+        ]
+    },
+    {
+        "id": "ad6ae6c7518f2533",
+        "type": "mqtt out",
+        "z": "13e81bc0e31599b1",
+        "name": "",
+        "topic": "stf/turntable/cmd/reset",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "87d849f528acb8d9",
+        "x": 920,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "411b9bac5ea8a043",
+        "type": "mqtt out",
+        "z": "13e81bc0e31599b1",
+        "name": "",
+        "topic": "stf/conveyor/cmd/reset",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "87d849f528acb8d9",
+        "x": 560,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "35652e5a8301d883",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "d74ed307593b0ba7",
+        "type": "ui_group",
+        "name": "Conveyor Status",
+        "tab": "91c943ce4c02fc1e",
+        "order": 1,
+        "disp": true,
+        "width": "7",
+        "collapse": true,
+        "className": ""
+    },
+    {
+        "id": "87d849f528acb8d9",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "91c943ce4c02fc1e",
+        "type": "ui_tab",
+        "name": "STF Conveyor Belt",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "5e85242509489d4c",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-dashboard": "3.6.6"
+        }
+    }
+]
